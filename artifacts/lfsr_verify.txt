@@ -1,0 +1,25 @@
+P (rows = Galois bits 0..14, cols = Fibonacci bits 0..14) over GF(2):
+0 0 0 0 0 0 0 0 0 0 0 0 0 1 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+1 1 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 1 1 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 1 1 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 1 1 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 1 1 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 1 1 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 1 1 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 1 1 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 1 1 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 1 1 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 1 1 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 1 1 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 1 0 0
+
+P @ TI reset 0x4000      = 0x0002  (expect 0x0002)  PASS
+P @ Sega 0x8000>>1       = 0x0002  (expect 0x0002)  PASS
+G P == P F               PASS
+rank(P) == 15              PASS (rank=15)
+Fibonacci period         32767  PASS
+Galois period from 0x2   32767  PASS
+Noise tap: architectural LSB in both forms (FORM selects basin, not tap).
+ASSUMED: fib bit0^bit1 + gal mask 0x6000 as reciprocal pair; verify against silicon if needed.
